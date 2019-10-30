@@ -53,6 +53,9 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "vmSize": {
+      "type": "string"
     }
   },
   "variables": {
@@ -68,7 +71,6 @@
     "publicIPAddressType": "Dynamic",
     "vmStorageAccountContainerName": "vhds",
     "vmName": "[parameters('dnsLabelPrefix')]",
-    "vmSize": "Standard_F1",
     "virtualNetworkName": "MyVNET",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "storageAccountType": "Standard_LRS",
@@ -157,7 +159,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[variables('vmSize')]"
+          "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
           "computerName": "[variables('vmName')]",
