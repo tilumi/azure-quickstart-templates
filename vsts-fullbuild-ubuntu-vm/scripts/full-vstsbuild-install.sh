@@ -71,6 +71,12 @@ echo "Installing maven package" >> /home/$5/install.progress.txt
 sudo apt-get -y install maven
 sudo /bin/date +%H:%M:%S >> /home/$5/install.progress.txt
 
+# Update Maven
+wget http://ftp.yz.yamagata-u.ac.jp/pub/network/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+sudo ln -s /opt/apache-maven-3.6.3 /opt/maven
+sudo update-alternatives --install /usr/bin/mvn mvn /opt/maven/bin/mvn 1000
+
 echo "Installing gradle package" >> /home/$5/install.progress.txt
 sudo apt-get -y install gradle
 sudo -u $5 /usr/bin/gradle
